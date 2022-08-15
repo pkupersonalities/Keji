@@ -112,7 +112,7 @@ async def getBriefing():
             print(url)
         async with session.get(url=url, params=params, ssl=False, cookies=cookies, headers=headers) as resp:
             text = await resp.text()
-            url = re.findall('<img data-src="(.*?)"',text)[0]
+            url = re.findall("cdn_url: '(.*?)',",text)[0]
             # bs = BS(text, "html.parser")
             # url = bs.find('div', id='img_list').img.get('src')
 #             print(url)
