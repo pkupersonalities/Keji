@@ -1,3 +1,7 @@
+"""
+Code is stolen from https://github.com/AnJT/mirai
+"""
+
 import asyncio
 import json
 
@@ -15,6 +19,7 @@ import datetime
 year = datetime.datetime.now().year
 month = datetime.datetime.now().month
 day = datetime.datetime.now().day
+
 
 ua = UserAgent().random
 print(ua)
@@ -117,7 +122,7 @@ async def getBriefing():
             # url = bs.find('div', id='img_list').img.get('src')
 #             print(url)
         async with session.get(url=url,  ssl=False, cookies=cookies, headers=headers) as resp:
-            with open(f'./output/img/news_{year}_{month}_{day}.jpg', 'wb') as file:
+            with open('./output/img/news.jpg', 'wb') as file:
                 bs = await toBtyes(resp)
                 file.write(bs)
         
@@ -125,7 +130,7 @@ async def getBriefing():
 #                 file.write(datetime.datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y-%m-%d %H:%M:%S'))
 #                 file.write('\n')
 #                 file.write(f'![](./output/picture.jpg)')
-    return f'./output/img/news_{year}_{month}_{day}.jpg'
+    return f'./output/img/news.jpg'
 
 
 async def toBtyes(resp):
